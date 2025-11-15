@@ -16,6 +16,13 @@ class Movie:
     def __str__(self):
         return f'{self.title} ({self.year}) - {self.duration} min, {self.director}'
 
+class TVSeries(Movie):
+    def __init__(self, title, year, director, duration, seasons, total_episodes):
+        super().__init__(title, year, director, duration)
+        self.seasons = seasons
+        self.total_episodes = total_episodes
+
+
 class MediaCatalogue:
     def __init__(self):
         self.items = []
@@ -34,12 +41,13 @@ class MediaCatalogue:
         return result
 
 catalogue = MediaCatalogue()
-
 try:
     movie1 = Movie('The Matrix', 1999, 'The Wachowskis', 136)
     catalogue.add(movie1)
     movie2 = Movie('Inception', 2010, 'Christopher Nolan', 148)
     catalogue.add(movie2)
+    
+
     print(catalogue)
 except ValueError as e:
     print(f'Validation Error: {e}')
