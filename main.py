@@ -18,6 +18,10 @@ class Movie:
 
 class TVSeries(Movie):
     def __init__(self, title, year, director, duration, seasons, total_episodes):
+        if seasons < 1:
+            raise ValueError('Seasons must be 1 or greater')
+        if total_episodes < 1:
+            raise ValueError('Total episodes must be 1 or greater')
         super().__init__(title, year, director, duration)
         self.seasons = seasons
         self.total_episodes = total_episodes
